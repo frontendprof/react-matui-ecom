@@ -9,7 +9,12 @@ import {makeStyles} from "@material-ui/styles";
 
 const useStyles=makeStyles(()=>({
     typographyStyle:{
-        flex:1
+        flex:1,
+        fontSize:30
+
+    },
+    root:{
+        marginBottom:20
     }
 }))
 
@@ -20,10 +25,10 @@ const Header = () => {
     const classes=useStyles();
 
     return(
-        <AppBar position="static">
+        <AppBar position="static" className={classes.root}>
             <Toolbar>
                 <Typography className={classes.typographyStyle}>
-                    THis is our headbar
+                    Mamazon Retailers heaven
                 </Typography>
 
                 <BrightnessAutoIcon />

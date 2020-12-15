@@ -1,56 +1,52 @@
 
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import CardHeader from '@material-ui/core/CardHeader';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import ShareIcon from '@material-ui/icons/Share';
+import CardMedia from '@material-ui/core/CardMedia';
 
 
 
+const CofeeCard = props => {
 
-const useStyles = makeStyles({
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
-
-
-
-const CofeeCard = () => {
-
-  const classes=useStyles();
+  const {avatarUrl,title,subtitle,desc,imageUrl}=props;
 
 
   return (
-    <Card >
+    <Card style={{ border:"2px dashed magenta" }}>
+      <CardHeader
+        avatar={
+          <Avatar src={avatarUrl}></Avatar>
+        }
+        action={
+          <IconButton aria-label="settings">
+            <ShareIcon />
+          </IconButton>
+        }
+        title={title}
+        subheader={subtitle}
+      />
+
+      <CardMedia style={{ height: "280px", backgroundPosition:"center" }}  image={imageUrl}    />
+
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="h2">
-          Lorem ipsum dolor sit amet, consectetur adis?
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
+        
         <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+            {desc}
         </Typography>
+
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
+      <CardActions style={{ marginLeft: "25px" }}>
+
+        <Button size="small" variant="contained" color="primary">Buy Now</Button>
+        <Button size="small" variant="outlined" color="secondary">Offer</Button>
       </CardActions>
     </Card>
   );
